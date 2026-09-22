@@ -1,34 +1,35 @@
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-keymap("n", "<leader>h", ":nohlsearch<CR>", opts)
+-- Arama vurgusunu temizle
+keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", { silent = true })
 
-keymap("n", "<leader>w", ":w<CR>", opts)
-keymap("n", "<leader>q", ":q<CR>", opts)
+-- Dosya kaydet / çık (silent vermemek çıktıyı ve hataları görmek için daha iyidir)
+keymap("n", "<leader>w", "<cmd>w<CR>")
+keymap("n", "<leader>q", "<cmd>q<CR>")
 
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
+-- Panoyu bozmadan yapıştır
+keymap("x", "<leader>p", [["_dP]])
 
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
+-- Sayfa kaydırırken imleci ortala
+keymap("n", "<C-d>", "<C-d>zz")
+keymap("n", "<C-u>", "<C-u>zz")
 
-keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+-- Arama sonuçlarında gezinirken ortala
+keymap("n", "n", "nzzzv")
+keymap("n", "N", "Nzzzv")
 
-keymap("x", "<leader>p", '"_dP', opts)
+-- Seçili satırları yukarı/aşağı taşı
+keymap("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+keymap("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
-keymap("n", "<leader>sv", "<C-w>v", opts)
-keymap("n", "<leader>sh", "<C-w>s", opts)
-keymap("n", "<leader>se", "<C-w>=", opts)
-keymap("n", "<leader>sx", ":close<CR>", opts)
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- Pencere bölme ve yönetimi
+keymap("n", "<leader>sv", "<C-w>v")
+keymap("n", "<leader>sh", "<C-w>s")
+keymap("n", "<leader>se", "<C-w>=")
+keymap("n", "<leader>sx", "<cmd>close<CR>")
 
-keymap("n", "<Tab>", ":bnext<CR>", opts)
-keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
-keymap("n", "<leader>bd", ":bdelete<CR>", opts)
+-- Teşhis mesajı (diagnostic)
+keymap("n", "gl", vim.diagnostic.open_float)

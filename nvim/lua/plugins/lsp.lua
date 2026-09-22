@@ -20,10 +20,11 @@ return {
         -- 2. Kurulmasını istediğiniz LSP Sunucuları
         local servers = {
             "clangd",      -- C / C++
+            "gopls",       -- Go
             "pyright",     -- Python
+            "ts_ls",       -- TypeScript / JavaScript
             "lua_ls",      -- Lua
             "bashls",      -- Bash
-            "ts_ls",       -- TypeScript / JavaScript
         }
 
         require("mason-lspconfig").setup({

@@ -1,11 +1,15 @@
 local opt = vim.opt
 
+vim.g.user = "aalkiz"
+vim.g.mail = "aalkiz@student.42istanbul.com.tr"
+
 opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
 opt.signcolumn = "yes"
 opt.termguicolors = true
 opt.showmode = false
+opt.wrap = false
 
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -30,4 +34,4 @@ opt.updatetime = 250
 opt.timeoutlen = 300
 opt.scrolloff = 8
 
-vim.opt.shell = "/bin/bash"
+opt.shell = "/bin/bash"
